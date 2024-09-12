@@ -1,10 +1,11 @@
 # Projeto de sistema banco
 
 ## Lista de tarefas
-- [ ] Sistema de salto
+- [ ] Mostrar saldo
+- [ ] Ajustar a classe `Account` para inicializar com saldo 0
 - [ ] Sistema de transferência
-- [ ] Sistema de saque
-- [ ] Sistema de depósito
+- [x] Sistema de saque
+- [x] Sistema de depósito
 - [x] Limitar o número de contas por cliente
 
 ### Sobre Salto

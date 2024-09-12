@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,16 @@ public class AccountController {
     @GetMapping
     public ResponseEntity<?> findAll() {
         return ResponseEntity.ok(accountService.findAll());
+    }
+
+    @PutMapping("/{id}/deposit/{value}")
+    public ResponseEntity<Double> deposit(@PathVariable("id") Long id, @PathVariable("value") Double value) {
+        return ResponseEntity.ok(accountService.deposit(id, value));
+    }
+
+    @PutMapping("/{id}/withdraw/{value}")
+    public ResponseEntity<Double> withdraw(@PathVariable("id") Long id, @PathVariable("value") Double value) {
+        return ResponseEntity.ok(accountService.withdraw(id, value));
     }
 
 }

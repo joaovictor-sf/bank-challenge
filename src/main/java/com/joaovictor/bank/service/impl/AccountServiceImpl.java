@@ -9,6 +9,7 @@ import com.joaovictor.bank.dto.PersonDTO;
 import com.joaovictor.bank.entities.Account;
 import com.joaovictor.bank.exceptions.DuplicateAccountTypeException;
 import com.joaovictor.bank.exceptions.MaxAccountNumberExcepetion;
+import com.joaovictor.bank.exceptions.ResourceNotFoundException;
 import com.joaovictor.bank.mapper.AccountMapper;
 import com.joaovictor.bank.mapper.PersonMapper;
 import com.joaovictor.bank.repositories.AccountRepository;
@@ -57,8 +58,33 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     public AccountDTO findById(Long id) {
-        Account account = accountRepository.findById(id).orElseThrow();
+        Account account = accountRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Account not found"));
         return AccountMapper.toDTO(account);
+    }
+
+    @Override
+    public Double deposit(Long id, Double value) {
+        AccountDTO account = findById(id);
+
+        if (value <= 0) throw new IllegalArgumentException("The value must be greater than zero");
+        
+        account.setBalance(account.getBalance() + value);
+        accountRepository.save(AccountMapper.toEntity(account));
+
+        return account.getBalance();
+    }
+
+    @Override
+    public Double withdraw(Long id, Double value) {
+        AccountDTO account = findById(id);
+
+        if (value <= 0) throw new IllegalArgumentException("The value must be greater than zero");
+        if (account.getBalance() < value) throw new IllegalArgumentException("Insufficient balance");
+
+        account.setBalance(account.getBalance() - value);
+        accountRepository.save(AccountMapper.toEntity(account));
+
+        return account.getBalance();
     }
 
 }
