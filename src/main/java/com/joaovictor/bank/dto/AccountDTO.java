@@ -16,5 +16,5 @@ public class AccountDTO {
     private Double balance;
     //private PersonDTO person;
     private Long personId;
-    private String accountType;
+    private String accountType;//SAVINGS, CHECKING
 }

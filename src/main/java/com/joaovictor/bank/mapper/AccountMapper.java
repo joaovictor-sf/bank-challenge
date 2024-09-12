@@ -3,6 +3,7 @@ package com.joaovictor.bank.mapper;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.joaovictor.bank.dto.AccountDTO;
 import com.joaovictor.bank.dto.PersonDTO;
@@ -11,12 +12,15 @@ import com.joaovictor.bank.entities.Person;
 import com.joaovictor.bank.entities.enums.AccountType;
 import com.joaovictor.bank.service.impl.PersonServiceImpl;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
+@Component
 public class AccountMapper {
 
     private static PersonServiceImpl personService;
+
+    @Autowired
+    public void setPersonService(PersonServiceImpl personService) {
+        AccountMapper.personService = personService;
+    }
 
     public static AccountDTO toDTO(Account account) {
         return new AccountDTO(
