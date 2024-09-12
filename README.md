@@ -1,11 +1,14 @@
 # Projeto de sistema banco
 
 ## Lista de tarefas
-- [x] Criar entidades
-- [ ] Criar repositórios
-- [ ] Criar serviços
-- [ ] Criar controllers
-- [ ] Fazer com que uma pessoa só possa ter uma conta de cada tipo
-- [ ] sistema de deposito de dinheiro
-- [ ] sistema de saque de dinheiro
-- [ ] Na classe Tornar as variáveis account e destinationAccount não podem ser nulas(Provavelmente vai precisar do Validation)
+- [ ] Sistema de salto
+- [ ] Sistema de transferência
+- [ ] Sistema de saque
+- [ ] Sistema de depósito
+- [x] Limitar o número de contas por cliente
+
+### Sobre Salto
+- Toda conta começa com saldo de 0
+- O saldo pode ser alterado por meio de depósito, saque e transferência
+- O saldo não pode ser negativo
+- Se a conta for de crédito, o saldo representará a divida do cliente
