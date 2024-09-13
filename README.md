@@ -1,9 +1,13 @@
 # Projeto de sistema banco
 
 ## Lista de tarefas
-- [ ] Mostrar saldo
-- [ ] Ajustar a classe `Account` para inicializar com saldo 0
-- [ ] Sistema de transferência
+- [ ] Criar o Frontend
+- [ ] Conectar o Frontend com o Backend
+- [ ] Limpar o código
+- [x] Mostrar saldo
+- [x] Ajustar a classe `Account` para inicializar com saldo 0
+- [x] Sistema de transferência
+- [x] Tornar a transferência com a data automatica
 - [x] Sistema de saque
 - [x] Sistema de depósito
 - [x] Limitar o número de contas por cliente
@@ -12,4 +16,4 @@
 - Toda conta começa com saldo de 0
 - O saldo pode ser alterado por meio de depósito, saque e transferência
 - O saldo não pode ser negativo
-- Se a conta for de crédito, o saldo representará a divida do cliente
+- O Saldo pode ser negativo?

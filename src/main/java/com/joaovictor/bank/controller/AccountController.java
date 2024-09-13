@@ -46,4 +46,9 @@ public class AccountController {
         return ResponseEntity.ok(accountService.withdraw(id, value));
     }
 
+    @GetMapping("/{id}/balance")
+    public ResponseEntity<Double> getBalance(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(accountService.getBalance(id));
+    }
+
 }

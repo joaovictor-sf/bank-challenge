@@ -14,4 +14,8 @@ public interface AccountService {
     Double deposit(Long id, Double value);
     Double withdraw(Long id, Double value);
 
+    Double getBalance(Long id);
+
+    void transfer(Long id, Long destinationId, Double value);
+
 }

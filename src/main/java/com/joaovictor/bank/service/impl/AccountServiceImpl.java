@@ -26,6 +26,7 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     public AccountDTO create(AccountDTO accountDTO) {
+        accountDTO.setBalance(0.0);
         Account account = AccountMapper.toEntity(accountDTO);
         AccountDTO accountDTO2;
         int n = 0;
@@ -85,6 +86,37 @@ public class AccountServiceImpl implements AccountService{
         accountRepository.save(AccountMapper.toEntity(account));
 
         return account.getBalance();
+    }
+
+    @Override
+    public Double getBalance(Long id) {
+        AccountDTO account = findById(id);
+        return account.getBalance();
+    }
+
+    @Override
+    public void transfer(Long id, Long destinationId, Double value) {
+        if (id.equals(destinationId)) throw new IllegalArgumentException("The account and the destination account must be different");
+        System.out.println("Test");
+        AccountDTO account = findById(id);
+        System.out.println(account);
+        AccountDTO destination = findById(destinationId);
+        System.out.println(destination);
+
+        if (value <= 0) throw new IllegalArgumentException("The value must be greater than zero");
+        if (account.getBalance() < value) throw new IllegalArgumentException("Insufficient balance");
+
+        System.out.println("teste");
+        account.setBalance(account.getBalance() - value);
+        destination.setBalance(destination.getBalance() + value);
+
+        System.out.println("teste");
+        Account origin = AccountMapper.toEntity(account);
+        Account dest = AccountMapper.toEntity(destination);
+        System.out.println("teste");
+
+        accountRepository.save(origin);
+        accountRepository.save(dest);
     }
 
 }
