@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pessoas</title>
+</head>
+<body>
+    <!--Nav-->
+    <nav>
+        <a href="/">Pessoas</a>
+        <a href="/accounts">Contas</a>
+    </nav>
+
+    <h1>Lista de Pessoas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Cpf</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="person : ${persons}">
+                <td th:text="${person.id}">ID</td>
+                <td th:text="${person.name}">Nome</td>
+                <td th:text="${person.cpf}">Cpf</td>
+                <td th:text="${person.phone}">Phone</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Adicionar Nova Pessoa</h2>
+    <form th:action="@{/addPerson}" th:object="${person}" method="post">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" th:field="*{name}" />
+        <br/>
+        <label for="cpf">Cpf:</label>
+        <input type="text" id="cpf" th:field="*{cpf}" />
+        <br/>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" th:field="*{phone}" />
+        <br/>
+        <button type="submit">Adicionar</button>
+    </form>
+</body>
+</html>
