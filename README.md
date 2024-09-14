@@ -1,16 +1,20 @@
 # Projeto de sistema banco
+- Spring Boot 3.3.3
+- Thymeleaf
+- PostgreSQL
+- Java 21
 
 ## Lista de tarefas
-- [ ] Criar o Frontend
+- [x] Criar o Frontend
     - [x] Criar a front para Person
         - [x] Testar por erros
     - [x] Criar a front para Account
-        - [ ] Testar por erros
+        - [x] Testar por erros
         - [x] Tornar possivel realizar depósito
         - [x] Tornar possivel realizar saque
-        - [ ] Mostrar saldo
-    - [ ] Criar a front para Transfer
-        - [ ] Testar por erros
+        - [x] Mostrar saldo
+    - [x] Criar a front para Transfer
+        - [x] Testar por erros
 - [x] Conectar o Frontend com o Backend
 - [ ] Limpar o código
 - [x] Mostrar saldo
@@ -21,8 +25,18 @@
 - [x] Sistema de depósito
 - [x] Limitar o número de contas por cliente
 
-### Sobre Salto
-- Toda conta começa com saldo de 0
-- O saldo pode ser alterado por meio de depósito, saque e transferência
-- O saldo não pode ser negativo
-- O Saldo pode ser negativo?
+## Funcionalidades
+1. Cadastrar uma pessoa
+2. Cadastrar uma conta
+3. Realizar transferência
+4. Realizar saque
+5. Realizar depósito
+6. Mostrar saldo
+
+## Como rodar o projeto
+1. Clone o projeto
+2. Abra o projeto no IntelliJ
+3. Crie um banco de dados no PostgreSQL com o nome `bank`
+3. Execute o projeto
+4. Acesse `http://localhost:8080/`
+
