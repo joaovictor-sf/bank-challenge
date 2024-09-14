@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contas</title>
+</head>
+<body>
+    <!--Nav-->
+    <nav>
+        <a href="/">Pessoas</a>
+        <a href="/accounts">Contas</a>
+    </nav>
+
+    <h1>Lista de Contas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Digito</th>
+                <th>Número</th>
+                <th>Saldo</th>
+                <th>Tipo de Conta</th>
+                <th>ID da Pessoa</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="account : ${accounts}">
+                <td th:text="${account.id}">ID</td>
+                <td th:text="${account.digit}">Digito</td>
+                <td th:text="${account.number}">Número</td>
+                <td th:text="${account.balance}">Saldo</td>
+                <td th:text="${account.accountType}">Tipo de Conta</td>
+                <td th:text="${account.personId}">ID da Pessoa</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--<h2>Mostrar Saldo</h2>
+    <form th:action="@{/balance}" th:object="${account}" method="post">
+        <label for="id">ID da Conta:</label>
+        <input type="text" id="id" th:field="*{id}" pattern="[0-9]+" required />
+        <br/>
+        <button type="submit" onclick="">Mostrar</button>
+
+        <p th:if="${account.balance != null}">Saldo: <span th:text="${account.balance}"></span></p>th:object="${account}"
+    </form>-->
+
+    <h2>Realizar Saque ou Deposito</h2>
+    <!--<form th:action="@{/deposit}" method="put">
+        <label for="id">ID da Conta:</label>
+        <input type="text" id="id" th:field="*{id}" pattern="[0-9]+" required />
+        <br/>
+        <label for="amount">Valor:</label>
+        <input type="text" id="amount" th:field="*{amount}" pattern="[0-9]+(\.[0-9]{1,2})?" required />
+        <br/>
+        <button type="submit">Realizar</button>
+    </form>
+    
+    <form th:action="@{/withdraw}" method="put">
+        <label for="id">ID da Conta:</label>
+        <input type="text" id="id" th:field="*{id}" pattern="[0-9]+" required />
+        <br/>
+        <label for="amount">Valor:</label>
+        <input type="text" id="amount" th:field="*{amount}" pattern="[0-9]+(\.[0-9]{1,2})?" required />
+        <br/>
+        <button type="submit">Realizar</button>
+    </form>-->
+    <h3>Depositar</h3>
+    <form th:action="@{/deposit}" method="post">
+        <input type="hidden" name="_method" value="put" />
+        <label for="id">ID da Conta:</label>
+        <input type="text" id="id" name="id" pattern="[0-9]+" required />
+        <br/>
+        <label for="amount">Valor:</label>
+        <input type="text" id="amount" name="amount" pattern="[0-9]+(\.[0-9]{1,2})?" required />
+        <br/>
+        <button type="submit">Realizar</button>
+    </form>
+    
+    <h3>Sacar</h3>
+    <form th:action="@{/withdraw}" method="post">
+        <input type="hidden" name="_method" value="put" />
+        <label for="id">ID da Conta:</label>
+        <input type="text" id="id" name="id" pattern="[0-9]+" required />
+        <br/>
+        <label for="amount">Valor:</label>
+        <input type="text" id="amount" name="amount" pattern="[0-9]+(\.[0-9]{1,2})?" required />
+        <br/>
+        <button type="submit">Realizar</button>
+    </form>
+
+    <h2>Adicionar Nova Conta</h2>
+    <form th:action="@{/addAccount}" th:object="${account}" method="post">
+        <label for="digit">Digito:</label>
+        <input type="text" id="digit" th:field="*{digit}" maxlength="1" pattern="[0-9]" required />
+        <br/>
+        <label for="number">Número:</label>
+        <input type="text" id="number" th:field="*{number}" pattern="[0-9]+" required />
+        <br/>
+        <!--<label for="balance">Saldo:</label>
+        <input type="text" id="balance" th:field="*{balance}" pattern="[0-9]+(\.[0-9]{1,2})?" required />
+        <br/>-->
+        <label for="accountType">Tipo de Conta:</label>
+        <select id="accountType" th:field="*{accountType}" required>
+            <option value="SAVINGS" style="text-transform: uppercase;">Poupança</option>
+            <option value="CHECKING" style="text-transform: uppercase;">Corrente</option>
+        </select>
+        <br/>
+        <label for="personId">ID da Pessoa:</label>
+        <input type="text" id="personId" th:field="*{personId}" pattern="[0-9]+" required />
+        <br/>
+        <button type="submit">Adicionar</button>
+    </form>
+</body>
+</html>

@@ -35,13 +35,13 @@
     <h2>Adicionar Nova Pessoa</h2>
     <form th:action="@{/addPerson}" th:object="${person}" method="post">
         <label for="name">Nome:</label>
-        <input type="text" id="name" th:field="*{name}" />
+        <input type="text" id="name" th:field="*{name}"  pattern="[A-Za-z\s]+" required />
         <br/>
         <label for="cpf">Cpf:</label>
-        <input type="text" id="cpf" th:field="*{cpf}" />
+        <input type="text" id="cpf" th:field="*{cpf}" pattern="[0-9.\-]+" required />
         <br/>
         <label for="phone">Phone:</label>
-        <input type="text" id="phone" th:field="*{phone}" />
+        <input type="text" id="phone" th:field="*{phone}" pattern="[0-9\s]+" required />
         <br/>
         <button type="submit">Adicionar</button>
     </form>

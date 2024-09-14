@@ -2,7 +2,16 @@
 
 ## Lista de tarefas
 - [ ] Criar o Frontend
-- [ ] Conectar o Frontend com o Backend
+    - [x] Criar a front para Person
+        - [x] Testar por erros
+    - [x] Criar a front para Account
+        - [ ] Testar por erros
+        - [x] Tornar possivel realizar depósito
+        - [x] Tornar possivel realizar saque
+        - [ ] Mostrar saldo
+    - [ ] Criar a front para Transfer
+        - [ ] Testar por erros
+- [x] Conectar o Frontend com o Backend
 - [ ] Limpar o código
 - [x] Mostrar saldo
 - [x] Ajustar a classe `Account` para inicializar com saldo 0
