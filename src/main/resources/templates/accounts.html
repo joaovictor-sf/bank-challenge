@@ -10,6 +10,7 @@
     <nav>
         <a href="/">Pessoas</a>
         <a href="/accounts">Contas</a>
+        <a href="/transfers">Transferir</a>
     </nav>
 
     <h1>Lista de Contas</h1>
@@ -36,14 +37,22 @@
         </tbody>
     </table>
 
-    <!--<h2>Mostrar Saldo</h2>
-    <form th:action="@{/balance}" th:object="${account}" method="post">
+    <h2>Mostrar Saldo</h2>
+    <form th:action="@{/balance}" th:object="${account}" method="get">
+        <label for="id">ID da Conta:</label>
+        <input type="text" id="id" name="id" pattern="[0-9]+" required />
+        <br/>
+        <button type="submit">Mostrar</button>
+
+        <p th:if="${balance != null}">Saldo: <span th:text="${balance}"></span></p>
+    </form>
+    <!--<form th:action="@{/balance}" th:object="${account}" method="post">
         <label for="id">ID da Conta:</label>
         <input type="text" id="id" th:field="*{id}" pattern="[0-9]+" required />
         <br/>
         <button type="submit" onclick="">Mostrar</button>
 
-        <p th:if="${account.balance != null}">Saldo: <span th:text="${account.balance}"></span></p>th:object="${account}"
+        <p th:if="${account.balance != null}">Saldo: <span th:text="${account.balance}"></span></p>
     </form>-->
 
     <h2>Realizar Saque ou Deposito</h2>

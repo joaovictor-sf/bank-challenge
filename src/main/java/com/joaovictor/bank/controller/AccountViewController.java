@@ -51,6 +51,8 @@ public class AccountViewController {
     @GetMapping("/balance")
     public String balance(@RequestParam("id") Long id, Model model) {
         Double balance = accountService.getBalance(id);
+        AccountDTO account = accountService.findById(id);
+        model.addAttribute("account", account);
         model.addAttribute("balance", balance);
         return "accounts";
     }
