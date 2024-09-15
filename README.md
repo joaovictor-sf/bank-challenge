@@ -16,7 +16,7 @@
     - [x] Criar a front para Transfer
         - [x] Testar por erros
 - [x] Conectar o Frontend com o Backend
-- [ ] Limpar o código
+- [x] Limpar o código
 - [x] Mostrar saldo
 - [x] Ajustar a classe `Account` para inicializar com saldo 0
 - [x] Sistema de transferência
