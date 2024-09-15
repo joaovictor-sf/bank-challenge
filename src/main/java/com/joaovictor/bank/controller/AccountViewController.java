@@ -8,12 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.joaovictor.bank.dto.AccountDTO;
-import com.joaovictor.bank.dto.PersonDTO;
-import com.joaovictor.bank.entities.Account;
 import com.joaovictor.bank.service.impl.AccountServiceImpl;
 
 @Controller
@@ -21,31 +18,33 @@ public class AccountViewController {
     
     @Autowired
     private AccountServiceImpl accountService;
+    private static final String ACCOUNTS = "accounts";
+    private static final String REDIRECT_ACCOUNTS = "redirect:/accounts";
 
     @GetMapping("/accounts")
     public String listAccounts(Model model) {
         List<AccountDTO> accounts = accountService.findAll();
-        model.addAttribute("accounts", accounts);
+        model.addAttribute(ACCOUNTS, accounts);
         model.addAttribute("account", new AccountDTO());
-        return "accounts";
+        return ACCOUNTS;
     }
 
     @PostMapping("/addAccount")
     public String addAccount(@ModelAttribute AccountDTO account) {
         accountService.create(account);
-        return "redirect:/accounts";
+        return REDIRECT_ACCOUNTS;
     }
 
     @PostMapping("/deposit")
     public String deposit(@RequestParam("amount") Double amount, @RequestParam("id") Long id) {
         accountService.deposit(id, amount);
-        return "redirect:/accounts";
+        return REDIRECT_ACCOUNTS;
     }
 
     @PostMapping("/withdraw")
     public String withdraw(@RequestParam("amount") Double amount, @RequestParam("id") Long id) {
         accountService.withdraw(id, amount);
-        return "redirect:/accounts";
+        return REDIRECT_ACCOUNTS;
     }
 
     @GetMapping("/balance")
@@ -54,6 +53,6 @@ public class AccountViewController {
         AccountDTO account = accountService.findById(id);
         model.addAttribute("account", account);
         model.addAttribute("balance", balance);
-        return "accounts";
+        return ACCOUNTS;
     }
 }

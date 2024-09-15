@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.joaovictor.bank.dto.PersonDTO;
-import com.joaovictor.bank.entities.Person;
-import com.joaovictor.bank.mapper.PersonMapper;
 import com.joaovictor.bank.service.impl.PersonServiceImpl;
 
 @Controller

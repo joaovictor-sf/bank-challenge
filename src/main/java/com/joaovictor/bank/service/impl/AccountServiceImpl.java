@@ -5,13 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.joaovictor.bank.dto.AccountDTO;
-import com.joaovictor.bank.dto.PersonDTO;
 import com.joaovictor.bank.entities.Account;
 import com.joaovictor.bank.exceptions.DuplicateAccountTypeException;
 import com.joaovictor.bank.exceptions.MaxAccountNumberExcepetion;
 import com.joaovictor.bank.exceptions.ResourceNotFoundException;
 import com.joaovictor.bank.mapper.AccountMapper;
-import com.joaovictor.bank.mapper.PersonMapper;
 import com.joaovictor.bank.repositories.AccountRepository;
 import com.joaovictor.bank.service.AccountService;
 
@@ -22,7 +20,6 @@ import lombok.AllArgsConstructor;
 public class AccountServiceImpl implements AccountService{
     
     private AccountRepository accountRepository;
-    //private PersonServiceImpl personService;
 
     @Override
     public AccountDTO create(AccountDTO accountDTO) {
